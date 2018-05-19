@@ -49,23 +49,24 @@ class Main extends Application {
 
     circles.setEffect(new BoxBlur(10, 10, 3))
 
-
-    val timeline = new Timeline
     val r = new Random
 
-    for (circle:Node <- circles.getChildren) {
-      timeline.getKeyFrames.addAll(
-        new KeyFrame(Duration.ZERO, // set start position at 0
-          new KeyValue(circle.translateXProperty, r.nextDouble * 800),
-          new KeyValue(circle.translateYProperty, r.nextDouble * 600)),
-        new KeyFrame(new Duration(40000), // set end position at 40s
-          new KeyValue(circle.translateXProperty, r.nextDouble * 800),
-          new KeyValue(circle.translateYProperty, r.nextDouble * 600)
-        )
-      )
-    }
+    println(circles.getChildren)
+
+
+    val timeline = new Timeline
+ｇち
+    // for (circle <- circles.getChildren) {
+    //      timeline.getKeyFrames.addAll(
+    //        new KeyFrame(Duration.ZERO, // set start position at 0
+    //          new KeyValue(circle.translateXProperty, 800),
+    //          new KeyValue(circle.translateYProperty, 600)),
+    //        new KeyFrame(new Duration(40000), // set end position at 40s
+    //          new KeyValue(circle.translateXProperty, 800),
+    //          new KeyValue(circle.translateYProperty, 600)))
+    //}
     // play 40s of animation
-    timeline.play
+
 
     stage.show
   }
