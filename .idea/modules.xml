@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/scala-javafx.iml" filepath="$PROJECT_DIR$/.idea/modules/scala-javafx.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/scala-javafx-build.iml" filepath="$PROJECT_DIR$/.idea/modules/scala-javafx-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/scala-javaFX.iml" filepath="$PROJECT_DIR$/scala-javaFX.iml" />
     </modules>
   </component>
 </project>

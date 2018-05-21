@@ -10,7 +10,15 @@ import javafx.animation.{KeyFrame, KeyValue, Timeline}
 import collection.JavaConverters._
 import scala.collection.mutable.ArrayBuffer
 import scala.util.Random
+import javafx.collections.ObservableList
+import scala.collection.JavaConversions._
 //import static java.lang.Math.random
+
+object Main extends App {
+  Application.launch(classOf[Main], args: _*)
+}
+
+
 
 class Main extends Application {
   override def start(stage: Stage) {
@@ -51,22 +59,20 @@ class Main extends Application {
 
     val r = new Random
 
-    println(circles.getChildren)
+    //println(circles.getChildren)
 
 
     val timeline = new Timeline
-ｇち
-    // for (circle <- circles.getChildren) {
-    //      timeline.getKeyFrames.addAll(
-    //        new KeyFrame(Duration.ZERO, // set start position at 0
-    //          new KeyValue(circle.translateXProperty, 800),
-    //          new KeyValue(circle.translateYProperty, 600)),
-    //        new KeyFrame(new Duration(40000), // set end position at 40s
-    //          new KeyValue(circle.translateXProperty, 800),
-    //          new KeyValue(circle.translateYProperty, 600)))
-    //}
-    // play 40s of animation
-
+     for (circle <- circles.getChildren) {
+//          timeline.getKeyFrames.addAll(
+//            new KeyFrame(Duration.ZERO, // set start position at 0
+//              new KeyValue(circle.translateXProperty, 800),
+//              new KeyValue(circle.translateYProperty, 600)),
+//            new KeyFrame(new Duration(40000), // set end position at 40s
+//              new KeyValue(circle.translateXProperty, 800),
+//              new KeyValue(circle.translateYProperty, 600)))
+    }
+     //play 40s of animation
 
     stage.show
   }

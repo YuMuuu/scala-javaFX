@@ -4,7 +4,7 @@
 		module="scala-javafx-build"
 		revision="0.1.0-SNAPSHOT"
 		status="integration"
-		publication="20180513190242"
+		publication="20180521165750"
 		e:sbtVersion="1.0" e:scalaVersion="2.12"
 	>
 		<description>
