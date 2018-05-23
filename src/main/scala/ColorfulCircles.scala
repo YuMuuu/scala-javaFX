@@ -1,11 +1,15 @@
+import java.awt.event.KeyEvent
+
 import javafx.animation.{KeyFrame, KeyValue, Timeline}
 import javafx.application.Application
+import javafx.event.EventHandler
 import javafx.scene.effect.{BlendMode, BoxBlur}
 import javafx.scene.paint.{Color, CycleMethod, LinearGradient, Stop}
 import javafx.scene.shape.{Circle, Rectangle, StrokeType}
-import javafx.scene.{Group, Scene}
+import javafx.scene.{Group, Scene, input}
 import javafx.stage.Stage
 import javafx.util.Duration
+
 import collection.JavaConverters._
 import scala.collection.mutable.ArrayBuffer
 import scala.util.Random
@@ -16,20 +20,34 @@ object Main extends App {
 }
 
 class ColorfulCircles extends Application {
-  override def start(primaryStage: Stage){
+  val WIDTH = 1600
+  val HEIGHT = 800
+  val circleNum:Int = WIDTH * HEIGHT /16000
+
+  override def start(primaryStage: Stage) {
     val root = new Group
-    val scene = new Scene(root, 800, 600, Color.BLACK)
+    val scene = new Scene(root, WIDTH, HEIGHT, Color.BLACK)
+
+    scene.setOnKeyPressed((event: input.KeyEvent) => {
+      event.getCode.toString match {
+        case "UP" => println("press UP")
+        case "DOWN" => println("press DOWN")
+        case "RIGHT" => println("press RIGHT")
+        case "LEFT" => println("press LEFT")
+        case _ => println("press ")
+      }
+    })
+
+
     primaryStage.setScene(scene)
     val circles = new Group()
-
-    for (i <- 0 to 29) {
+    for (i <- 0 to circleNum -1) {
       val circle = new Circle(150, Color.web("white", 0.05))
       circle.setStrokeType(StrokeType.OUTSIDE)
       circle.setStroke(Color.web("white", 0.16))
       circle.setStrokeWidth(4)
       circles.getChildren.add(circle)
     }
-
 
     val colors = new Rectangle(scene.getWidth, scene.getHeight, new LinearGradient(0f, 1f, 1f, 0f, true, CycleMethod.NO_CYCLE,
       ArrayBuffer(
@@ -58,11 +76,11 @@ class ColorfulCircles extends Application {
     for (circle <- circles.getChildren.asScala) {
       timeline.getKeyFrames.addAll(
         new KeyFrame(Duration.ZERO, // set start position at 0
-          new KeyValue(circle.translateXProperty.asInstanceOf[javafx.beans.value.WritableValue[Any]], 800 * r.nextDouble),
-          new KeyValue(circle.translateYProperty.asInstanceOf[javafx.beans.value.WritableValue[Any]], 600 * r.nextDouble)),
+          new KeyValue(circle.translateXProperty.asInstanceOf[javafx.beans.value.WritableValue[Any]], WIDTH * r.nextDouble),
+          new KeyValue(circle.translateYProperty.asInstanceOf[javafx.beans.value.WritableValue[Any]], HEIGHT * r.nextDouble)),
         new KeyFrame(new Duration(40000), // set end position at 40s
-          new KeyValue(circle.translateXProperty.asInstanceOf[javafx.beans.value.WritableValue[Any]], 800 * r.nextDouble),
-          new KeyValue(circle.translateYProperty.asInstanceOf[javafx.beans.value.WritableValue[Any]], 600 * r.nextDouble))
+          new KeyValue(circle.translateXProperty.asInstanceOf[javafx.beans.value.WritableValue[Any]], WIDTH * r.nextDouble),
+          new KeyValue(circle.translateYProperty.asInstanceOf[javafx.beans.value.WritableValue[Any]], HEIGHT * r.nextDouble))
       )
     }
 
